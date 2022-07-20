@@ -35,6 +35,10 @@ node .
 
 If all has been done correctly then it should be working, if not contact **Asptu#0003** on discord
 
+## Todo
 
+- Make a cache list for slack users profile pictures and names as getting them in the first place is quite a slow process
+- Support for slack attachments to discord?
+- Maybe redoing how slack to discord threads work as they're kinda weird
 
 Heavily inspired by https://github.com/HackSoc/slack-discord-bridge
