@@ -6,7 +6,6 @@ require("dotenv").config();
 
 const slack_web = new WebClient(process.env.SLACK_BOT_TOKEN);
 
-
 const discord_client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -26,8 +25,8 @@ slack_app.event("message", async ({ message }) => {
   // Make an array of all the slack channel ids in your workspace and then an array with all of the webhooks links then Position 1 of slack array will match with Position 1 in discord array
   // Example:
   var slackChats = [
-    'DJSJSDDS',
-    'DSJKDJKS'
+    "DJSJSDDS",
+    "DSJKDJKS"
   ];
   // Example:
   var discordChats = [
@@ -47,30 +46,29 @@ slack_app.event("message", async ({ message }) => {
     let p = await slack_app.client.users.profile.get({ user: message.user });
 
     if (message.parent_user_id !== undefined) {
-      
       let pThread = await slack_app.client.users.profile.get({
         user: message.parent_user_id,
       });
-       if (message.text !== "") {
-       if (message.text == null || undefined) return;
-       if (message.text.includes("@everyone" || "@here")) return;
-      console.log('thread detected')
-      webhookClient.send({
-        content: `**Replying to ${pThread.profile.display_name} ⇒** ${message.text}`,
-        username: `Slack: ${p.profile.display_name}`,
-        avatarURL: p.profile.image_192,
-      });
-    }
+      if (message.text !== "") {
+        if (message.text == null || undefined) return;
+        if (message.text.includes("@everyone" || "@here")) return;
+        console.log("thread detected");
+        webhookClient.send({
+          content: `**Replying to ${pThread.profile.display_name} ⇒** ${message.text}`,
+          username: `Slack: ${p.profile.display_name}`,
+          avatarURL: p.profile.image_192,
+        });
+      }
     } else {
       if (message.text !== "") {
-      if (message.text == null || undefined) return;
-      if (message.text.includes("@everyone" || "@here")) return;
-      console.log('message detected')
-      webhookClient.send({
-        content: message.text,
-        username: `Slack: ${p.profile.display_name}`,
-        avatarURL: p.profile.image_192,
-      });
+        if (message.text == null || undefined) return;
+        if (message.text.includes("@everyone" || "@here")) return;
+        console.log("message detected");
+        webhookClient.send({
+          content: message.text,
+          username: `Slack: ${p.profile.display_name}`,
+          avatarURL: p.profile.image_192,
+        });
       }
     }
 
@@ -104,36 +102,34 @@ slack_app.event("message", async ({ message }) => {
           if (fileSizeInMegabytes > 8) return console.log("file too large");
 
           if (message.parent_user_id !== undefined) {
-
             let pThread = await slack_app.client.users.profile.get({
               user: message.parent_user_id,
             });
-          console.log('attachment thread detected')
-          await webhookClient.send({
-            content: `**Replying to ${pThread.profile.display_name} ⇒**`,
-            files: [
-              {
-                attachment: path,
-                name: `${i.id}.${i.filetype}`,
-              },
-            ],
-            username: `Slack: ${p.profile.display_name}`,
-            avatarURL: p.profile.image_192,
-          });
-
-        } else {
-          console.log('attachment message detected')
-          await webhookClient.send({
-            files: [
-              {
-                attachment: path,
-                name: `${i.id}.${i.filetype}`,
-              },
-            ],
-            username: `Slack: ${p.profile.display_name}`,
-            avatarURL: p.profile.image_192,
-          });
-        }
+            console.log("attachment thread detected");
+            await webhookClient.send({
+              content: `**Replying to ${pThread.profile.display_name} ⇒**`,
+              files: [
+                {
+                  attachment: path,
+                  name: `${i.id}.${i.filetype}`,
+                },
+              ],
+              username: `Slack: ${p.profile.display_name}`,
+              avatarURL: p.profile.image_192,
+            });
+          } else {
+            console.log("attachment message detected");
+            await webhookClient.send({
+              files: [
+                {
+                  attachment: path,
+                  name: `${i.id}.${i.filetype}`,
+                },
+              ],
+              username: `Slack: ${p.profile.display_name}`,
+              avatarURL: p.profile.image_192,
+            });
+          }
 
           fs.unlinkSync(path);
         });
@@ -143,18 +139,17 @@ slack_app.event("message", async ({ message }) => {
 });
 
 discord_client.on("messageCreate", (message) => {
-
   // Make an array of all the slack channel ids in your workspace and then an array with all of the channel ids then Position 1 of slack array will match with Position 1 in discord array
 
-// Example: (same as channel ids above)
+  // Example: (same as channel ids above)
   var slackChats = [
     "DJSJSDDS",
-    "DSJKDJKS",
+    "DSJKDJKS"
   ];
   // Example
   var discordChats = [
     "478958934758973894",
-    "438756345873589783",
+    "438756345873589783"
   ];
 
   if (discordChats.indexOf(message.channel.id) > -1) {
