@@ -3,7 +3,7 @@
 
 ![](https://i.imgur.com/CbFORRc.gif)
 
-If you would like a full tutorial on setting this up (the hard stuff like the api keys, etc) please contact **Asptu#0003** on discord and I can guide you through the process.
+If you would like a full tutorial on setting this up (the hard stuff like the api keys, etc) please contact **Asptu#0005** on discord and I can guide you through the process.
 
 ## Requires
 
@@ -33,7 +33,7 @@ Setup your channel arrays properly in app.js and then run
 node .
 ```
 
-If all has been done correctly then it should be working, if not contact **Asptu#0003** on discord
+If all has been done correctly then it should be working, if not contact **Asptu#0005** on discord
 
 ## Todo
 
